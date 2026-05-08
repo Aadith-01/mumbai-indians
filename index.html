@@ -14,8 +14,6 @@
   --gold:#D4AF37;
   --sky:#5BC8F5;
   --dark:#001A3A;
-  --green:#00FF99;
-  --red:#FF4444;
 }
 
 *{
@@ -29,7 +27,6 @@ body{
   font-family:'Baloo 2',cursive;
   overflow-x:hidden;
   color:white;
-  min-height:100vh;
 }
 
 /* STARFIELD */
@@ -112,56 +109,6 @@ body::before{
   font-weight:700;
 }
 
-/* TABS */
-
-.tabs{
-  display:flex;
-  justify-content:center;
-  gap:10px;
-  margin:20px 0;
-  flex-wrap:wrap;
-}
-
-.tab-btn{
-  border:none;
-  cursor:pointer;
-  padding:12px 18px;
-  border-radius:12px;
-  background:#002D6E;
-  color:white;
-  border:2px solid var(--gold);
-  font-family:'Press Start 2P';
-  font-size:9px;
-  transition:0.3s;
-}
-
-.tab-btn:hover,
-.tab-btn.active{
-  background:var(--gold);
-  color:black;
-  box-shadow:0 0 20px var(--gold);
-}
-
-.tab-content{
-  display:none;
-  animation:fade 0.4s ease;
-}
-
-.tab-content.active{
-  display:block;
-}
-
-@keyframes fade{
-  from{
-    opacity:0;
-    transform:translateY(10px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-}
-
 /* CARD */
 
 .card{
@@ -171,7 +118,7 @@ body::before{
   border-radius:20px;
   padding:20px;
   border:2px solid var(--blue);
-  margin-bottom:20px;
+  margin-top:20px;
   transition:0.3s;
 }
 
@@ -233,13 +180,6 @@ body::before{
   border-radius:16px;
   padding:15px;
   text-align:center;
-  transition:0.3s;
-}
-
-.stat:hover{
-  border-color:var(--gold);
-  transform:translateY(-5px);
-  box-shadow:0 0 20px rgba(212,175,55,0.4);
 }
 
 .stat .num{
@@ -253,54 +193,6 @@ body::before{
   color:var(--sky);
 }
 
-/* SQUAD */
-
-.squad-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
-  gap:15px;
-}
-
-.player{
-  position:relative;
-  overflow:hidden;
-  background:linear-gradient(160deg,#0A2A5E,#001A3A);
-  border-radius:16px;
-  padding:20px;
-  text-align:center;
-  border:2px solid var(--blue);
-  transition:0.3s;
-}
-
-.player:hover{
-  transform:translateY(-6px);
-  border-color:var(--gold);
-  box-shadow:0 0 20px rgba(212,175,55,0.4);
-}
-
-.player h3{
-  color:white;
-}
-
-.player p{
-  color:var(--sky);
-  margin-top:8px;
-}
-
-.player .bar{
-  position:absolute;
-  left:-100%;
-  bottom:0;
-  width:100%;
-  height:4px;
-  background:var(--gold);
-  transition:0.4s;
-}
-
-.player:hover .bar{
-  left:0;
-}
-
 /* GAME */
 
 .game-box{
@@ -308,41 +200,23 @@ body::before{
 }
 
 canvas{
-  width:100%;
-  max-width:100%;
-  border-radius:16px;
-  border:3px solid var(--gold);
   background:black;
+  border:3px solid var(--gold);
+  border-radius:16px;
+  width:100%;
+  max-width:320px;
   margin-top:15px;
 }
 
 .hud{
+  margin-top:10px;
+  font-family:'Press Start 2P';
+  font-size:10px;
   display:flex;
   justify-content:space-between;
   flex-wrap:wrap;
   gap:10px;
-  margin-top:10px;
-  font-family:'Press Start 2P';
-  font-size:10px;
 }
-
-.health{
-  width:120px;
-  height:14px;
-  border-radius:10px;
-  background:#111;
-  overflow:hidden;
-  border:2px solid var(--gold);
-}
-
-.health-bar{
-  height:100%;
-  width:100%;
-  background:linear-gradient(90deg,#00FF99,#00CC66);
-  transition:0.3s;
-}
-
-/* BUTTONS */
 
 .controls{
   margin-top:15px;
@@ -352,17 +226,13 @@ canvas{
   flex-wrap:wrap;
 }
 
-button{
-  cursor:pointer;
-}
-
 .btn{
   border:none;
+  cursor:pointer;
   padding:12px 18px;
   border-radius:10px;
   font-family:'Press Start 2P';
   font-size:9px;
-  transition:0.2s;
 }
 
 .play{
@@ -374,17 +244,19 @@ button{
   color:white;
 }
 
-.btn:hover{
-  transform:translateY(-3px);
-}
-
 /* DPAD */
 
 .dpad{
   margin-top:18px;
   display:flex;
-  justify-content:center;
-  gap:10px;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+}
+
+.dpad-row{
+  display:flex;
+  gap:8px;
 }
 
 .dpad button{
@@ -395,82 +267,31 @@ button{
   background:var(--blue);
   color:white;
   border:2px solid var(--gold);
-  font-size:24px;
+  font-size:20px;
 }
 
-/* LEADERBOARD */
+/* RULES */
 
-.leaderboard{
+.rules{
   margin-top:20px;
   background:#001A3A;
-  padding:15px;
   border-radius:16px;
+  padding:18px;
   border:2px solid var(--blue);
+  text-align:left;
 }
 
-.leaderboard h3{
+.rules h3{
   color:var(--gold);
   margin-bottom:10px;
 }
 
-.leaderboard li{
-  margin:8px 0;
+.rules li{
+  margin:10px 0;
   color:var(--sky);
 }
 
-/* TOAST */
-
-.toast{
-  position:fixed;
-  bottom:20px;
-  left:50%;
-  transform:translateX(-50%);
-  background:black;
-  border:2px solid var(--gold);
-  padding:12px 18px;
-  border-radius:12px;
-  font-family:'Press Start 2P';
-  font-size:8px;
-  z-index:9999;
-  animation:toast 2s forwards;
-}
-
-@keyframes toast{
-  0%{
-    opacity:0;
-    transform:translateX(-50%) translateY(20px);
-  }
-  15%,80%{
-    opacity:1;
-    transform:translateX(-50%) translateY(0);
-  }
-  100%{
-    opacity:0;
-    transform:translateX(-50%) translateY(-20px);
-  }
-}
-
-/* POPUPS */
-
-.popup{
-  position:absolute;
-  color:white;
-  font-family:'Press Start 2P';
-  font-size:10px;
-  pointer-events:none;
-  animation:popup 1s forwards;
-}
-
-@keyframes popup{
-  from{
-    opacity:1;
-    transform:translateY(0);
-  }
-  to{
-    opacity:0;
-    transform:translateY(-30px);
-  }
-}
+/* FOOTER */
 
 .footer{
   text-align:center;
@@ -490,15 +311,7 @@ button{
   <p>Retro Arcade Edition 🔥</p>
 </div>
 
-<div class="tabs">
-  <button class="tab-btn active" onclick="showTab('home',this)">🏠 Home</button>
-  <button class="tab-btn" onclick="showTab('squad',this)">👥 Squad</button>
-  <button class="tab-btn" onclick="showTab('game',this)">🎮 Game</button>
-</div>
-
 <!-- HOME -->
-
-<div id="home" class="tab-content active">
 
 <div class="card">
 
@@ -527,96 +340,62 @@ button{
 
 </div>
 
-</div>
-
-<!-- SQUAD -->
-
-<div id="squad" class="tab-content">
-
-<div class="squad-grid">
-
-<div class="player">
-<h3>Rohit Sharma</h3>
-<p>Hitman 🏏</p>
-<div class="bar"></div>
-</div>
-
-<div class="player">
-<h3>Bumrah</h3>
-<p>Yorker King ⚡</p>
-<div class="bar"></div>
-</div>
-
-<div class="player">
-<h3>SKY</h3>
-<p>360° 🚀</p>
-<div class="bar"></div>
-</div>
-
-<div class="player">
-<h3>Hardik</h3>
-<p>Captain 💙</p>
-<div class="bar"></div>
-</div>
-
-<div class="player">
-<h3>Pollard</h3>
-<p>Legend 🏆</p>
-<div class="bar"></div>
-</div>
-
-<div class="player">
-<h3>Tim David</h3>
-<p>Power 🔥</p>
-<div class="bar"></div>
-</div>
-
-</div>
-
-</div>
-
 <!-- GAME -->
-
-<div id="game" class="tab-content">
 
 <div class="card game-box">
 
-<h2>🏏 Catch The Six</h2>
+<h2>🎮 MI TETRIS</h2>
 
 <div class="hud">
-
 <div>SCORE: <span id="score">0</span></div>
-
-<div class="health">
-<div class="health-bar" id="healthBar"></div>
+<div>LINES: <span id="lines">0</span></div>
 </div>
 
-<div>🛡️ <span id="shieldText">OFF</span></div>
-
-</div>
-
-<canvas id="gameCanvas" width="700" height="400"></canvas>
+<canvas id="game" width="300" height="600"></canvas>
 
 <div class="controls">
 <button class="btn play" onclick="startGame()">▶ PLAY</button>
 <button class="btn reset" onclick="resetGame()">↺ RESET</button>
 </div>
 
+<!-- MOBILE CONTROLS -->
+
 <div class="dpad">
+
+<div class="dpad-row">
+<button onclick="rotate()">⟳</button>
+</div>
+
+<div class="dpad-row">
 <button id="leftBtn">◀</button>
+<button id="downBtn">▼</button>
 <button id="rightBtn">▶</button>
 </div>
 
-<div class="leaderboard">
-<h3>🏆 TOP SCORES</h3>
-<ol>
-<li>Rohit - 99</li>
-<li>SKY - 85</li>
-<li>Bumrah - 81</li>
-<li>Pollard - 76</li>
-<li>Hardik - 70</li>
-</ol>
 </div>
+
+<!-- RULES -->
+
+<div class="rules">
+
+<h3>📜 HOW TO PLAY</h3>
+
+<ul>
+<li>Arrange the falling blocks to complete full horizontal lines.</li>
+
+<li>When a line is completed, it disappears and you get points.</li>
+
+<li>The game becomes faster as your score increases.</li>
+
+<li>If the blocks reach the top → GAME OVER 💀</li>
+
+<li>Use ◀ ▶ to move blocks.</li>
+
+<li>Use ⟳ to rotate blocks.</li>
+
+<li>Use ▼ to drop faster.</li>
+
+</ul>
 
 </div>
 
@@ -630,383 +409,361 @@ Made for fun 😸💙
 
 <script>
 
-/* TABS */
-
-function showTab(id,btn){
-
-  document.querySelectorAll('.tab-content')
-  .forEach(t=>t.classList.remove('active'));
-
-  document.querySelectorAll('.tab-btn')
-  .forEach(b=>b.classList.remove('active'));
-
-  document.getElementById(id)
-  .classList.add('active');
-
-  btn.classList.add('active');
-}
-
-/* TOAST */
-
-function toast(msg){
-
-  const t=document.createElement('div');
-
-  t.className='toast';
-
-  t.innerText=msg;
-
-  document.body.appendChild(t);
-
-  setTimeout(()=>{
-    t.remove();
-  },2000);
-}
-
-/* GAME */
-
-const canvas=document.getElementById('gameCanvas');
+const canvas=document.getElementById('game');
 const ctx=canvas.getContext('2d');
 
+const ROWS=20;
+const COLS=10;
+const SIZE=30;
+
+let board=[];
 let score=0;
-let lives=3;
-let shield=false;
-let playing=false;
+let lines=0;
+let gameOver=false;
+let dropCounter=0;
+let dropInterval=700;
+let lastTime=0;
 
-const W=canvas.width;
-const H=canvas.height;
-
-const bat={
-  x:300,
-  y:360,
-  w:120,
-  h:18,
-  speed:8
-};
-
-const balls=[];
-
-const keys={};
-
-const types=[
-{
-  type:'gold',
-  color:'#D4AF37',
-  points:1
-},
-{
-  type:'green',
-  color:'#00FF99',
-  points:3
-},
-{
-  type:'blue',
-  color:'#5BC8F5',
-  shield:true
-},
-{
-  type:'bomb',
-  color:'#FF4444',
-  bomb:true
-}
+const colors=[
+null,
+'#5BC8F5',
+'#D4AF37',
+'#FF4444',
+'#00FF99',
+'#9966FF',
+'#FF9900',
+'#FFFFFF'
 ];
 
-function updateHUD(){
+const pieces='TJLOSZI';
 
-  document.getElementById('score').innerText=score;
+function createBoard(){
 
-  document.getElementById('shieldText')
-  .innerText=shield?'ON':'OFF';
+  board=[];
 
-  document.getElementById('healthBar')
-  .style.width=(lives/3)*100+'%';
+  for(let y=0;y<ROWS;y++){
+
+    board.push(new Array(COLS).fill(0));
+  }
 }
 
-function spawnBall(){
+function createPiece(type){
 
-  const t=types[Math.floor(Math.random()*types.length)];
+  if(type==='T'){
+    return [
+      [0,1,0],
+      [1,1,1],
+      [0,0,0]
+    ];
+  }
 
-  balls.push({
-    x:Math.random()*(W-40)+20,
-    y:-20,
-    r:14,
-    speed:2+Math.random()*3,
-    wobble:Math.random()*10,
-    ...t
+  if(type==='O'){
+    return [
+      [2,2],
+      [2,2]
+    ];
+  }
+
+  if(type==='L'){
+    return [
+      [0,3,0],
+      [0,3,0],
+      [0,3,3]
+    ];
+  }
+
+  if(type==='J'){
+    return [
+      [0,4,0],
+      [0,4,0],
+      [4,4,0]
+    ];
+  }
+
+  if(type==='I'){
+    return [
+      [0,5,0,0],
+      [0,5,0,0],
+      [0,5,0,0],
+      [0,5,0,0]
+    ];
+  }
+
+  if(type==='S'){
+    return [
+      [0,6,6],
+      [6,6,0],
+      [0,0,0]
+    ];
+  }
+
+  if(type==='Z'){
+    return [
+      [7,7,0],
+      [0,7,7],
+      [0,0,0]
+    ];
+  }
+}
+
+const player={
+  pos:{x:0,y:0},
+  matrix:null
+};
+
+function drawMatrix(matrix,offset){
+
+  matrix.forEach((row,y)=>{
+
+    row.forEach((value,x)=>{
+
+      if(value!==0){
+
+        ctx.fillStyle=colors[value];
+
+        ctx.fillRect(
+          (x+offset.x)*SIZE,
+          (y+offset.y)*SIZE,
+          SIZE,
+          SIZE
+        );
+
+        ctx.strokeStyle='#001A3A';
+
+        ctx.strokeRect(
+          (x+offset.x)*SIZE,
+          (y+offset.y)*SIZE,
+          SIZE,
+          SIZE
+        );
+      }
+    });
   });
 }
 
-function drawBat(){
+function draw(){
 
-  ctx.fillStyle='#004BA0';
+  ctx.fillStyle='#000';
+  ctx.fillRect(0,0,canvas.width,canvas.height);
 
-  ctx.fillRect(bat.x,bat.y,bat.w,bat.h);
-
-  ctx.fillStyle='#D4AF37';
-
-  ctx.fillRect(bat.x+5,bat.y+5,bat.w-10,4);
+  drawMatrix(board,{x:0,y:0});
+  drawMatrix(player.matrix,player.pos);
 }
 
-function drawBall(b,i){
+function merge(board,player){
 
-  b.y+=b.speed;
+  player.matrix.forEach((row,y)=>{
 
-  b.x+=Math.sin(Date.now()*0.005+i)*0.7;
+    row.forEach((value,x)=>{
 
-  ctx.beginPath();
+      if(value!==0){
 
-  ctx.fillStyle=b.color;
-
-  ctx.arc(b.x,b.y,b.r,0,Math.PI*2);
-
-  ctx.fill();
-
-  /* SEAM */
-
-  ctx.strokeStyle='rgba(255,255,255,0.4)';
-  ctx.beginPath();
-  ctx.arc(b.x,b.y,b.r-5,0,Math.PI);
-  ctx.stroke();
-
-  /* COLLISION */
-
-  if(
-    b.y+b.r>=bat.y &&
-    b.x>bat.x &&
-    b.x<bat.x+bat.w
-  ){
-
-    particle(b.x,b.y,b.color);
-
-    if(b.bomb){
-
-      if(shield){
-        shield=false;
-        toast('🛡️ BLOCKED!');
-      }else{
-        lives--;
-        toast('💣 BOMB!');
+        board[y+player.pos.y][x+player.pos.x]=value;
       }
-
-    }else if(b.shield){
-
-      shield=true;
-      toast('+SHIELD 🛡️');
-
-    }else{
-
-      score+=b.points;
-
-      popup(
-        '+'+b.points,
-        b.x,
-        b.y
-      );
-
-      if(score%10===0){
-        toast('🔥 LEVEL UP!');
-      }
-    }
-
-    balls.splice(i,1);
-
-    updateHUD();
-  }
-
-  /* MISS */
-
-  if(b.y>H+30){
-
-    if(!b.bomb){
-
-      lives--;
-      updateHUD();
-    }
-
-    balls.splice(i,1);
-  }
-}
-
-function popup(text,x,y){
-
-  const p=document.createElement('div');
-
-  p.className='popup';
-
-  p.innerText=text;
-
-  p.style.left=x+'px';
-
-  p.style.top=y+'px';
-
-  document.body.appendChild(p);
-
-  setTimeout(()=>{
-    p.remove();
-  },1000);
-}
-
-function particle(x,y,color){
-
-  for(let i=0;i<10;i++){
-
-    const p=document.createElement('div');
-
-    p.style.position='fixed';
-
-    p.style.left=x+'px';
-
-    p.style.top=y+'px';
-
-    p.style.width='6px';
-
-    p.style.height='6px';
-
-    p.style.borderRadius='50%';
-
-    p.style.background=color;
-
-    p.style.pointerEvents='none';
-
-    p.style.zIndex='9999';
-
-    p.style.transition='1s';
-
-    document.body.appendChild(p);
-
-    setTimeout(()=>{
-
-      p.style.transform=
-      `translate(${(Math.random()-0.5)*100}px,
-      ${(Math.random()-0.5)*100}px)`;
-
-      p.style.opacity='0';
-
-    },10);
-
-    setTimeout(()=>{
-      p.remove();
-    },1000);
-  }
-}
-
-function loop(){
-
-  if(!playing)return;
-
-  ctx.clearRect(0,0,W,H);
-
-  ctx.fillStyle='#000814';
-
-  ctx.fillRect(0,0,W,H);
-
-  drawBat();
-
-  if(Math.random()<0.03){
-    spawnBall();
-  }
-
-  balls.forEach((b,i)=>{
-    drawBall(b,i);
+    });
   });
+}
 
-  if(keys['ArrowLeft']){
-    bat.x-=bat.speed;
+function collide(board,player){
+
+  const m=player.matrix;
+  const o=player.pos;
+
+  for(let y=0;y<m.length;y++){
+
+    for(let x=0;x<m[y].length;x++){
+
+      if(
+        m[y][x]!==0 &&
+        (
+          board[y+o.y] &&
+          board[y+o.y][x+o.x]
+        )!==0
+      ){
+
+        return true;
+      }
+    }
   }
 
-  if(keys['ArrowRight']){
-    bat.x+=bat.speed;
+  return false;
+}
+
+function playerDrop(){
+
+  player.pos.y++;
+
+  if(collide(board,player)){
+
+    player.pos.y--;
+
+    merge(board,player);
+
+    playerReset();
+
+    sweep();
   }
 
-  bat.x=Math.max(0,Math.min(W-bat.w,bat.x));
+  dropCounter=0;
+}
 
-  if(lives<=0){
+function playerMove(dir){
 
-    playing=false;
+  player.pos.x+=dir;
 
-    toast('GAME OVER 💀');
+  if(collide(board,player)){
 
-    return;
+    player.pos.x-=dir;
+  }
+}
+
+function rotate(){
+
+  const matrix=player.matrix;
+
+  for(let y=0;y<matrix.length;y++){
+
+    for(let x=0;x<y;x++){
+
+      [
+        matrix[x][y],
+        matrix[y][x]
+      ]=[
+        matrix[y][x],
+        matrix[x][y]
+      ];
+    }
   }
 
-  requestAnimationFrame(loop);
+  matrix.forEach(row=>row.reverse());
+
+  if(collide(board,player)){
+
+    rotate();
+  }
+}
+
+function sweep(){
+
+  outer:
+  for(let y=board.length-1;y>0;y--){
+
+    for(let x=0;x<board[y].length;x++){
+
+      if(board[y][x]===0){
+
+        continue outer;
+      }
+    }
+
+    const row=board.splice(y,1)[0].fill(0);
+
+    board.unshift(row);
+
+    y++;
+
+    score+=10;
+    lines++;
+
+    document.getElementById('score').innerText=score;
+    document.getElementById('lines').innerText=lines;
+
+    dropInterval=Math.max(150,dropInterval-20);
+  }
+}
+
+function playerReset(){
+
+  const piece=pieces[
+    pieces.length*Math.random()|0
+  ];
+
+  player.matrix=createPiece(piece);
+
+  player.pos.y=0;
+
+  player.pos.x=
+  (COLS/2|0)-
+  (player.matrix[0].length/2|0);
+
+  if(collide(board,player)){
+
+    gameOver=true;
+
+    alert('GAME OVER 💀');
+  }
+}
+
+function update(time=0){
+
+  const delta=time-lastTime;
+
+  lastTime=time;
+
+  dropCounter+=delta;
+
+  if(dropCounter>dropInterval){
+
+    playerDrop();
+  }
+
+  draw();
+
+  if(!gameOver){
+
+    requestAnimationFrame(update);
+  }
 }
 
 function startGame(){
 
-  if(playing)return;
+  createBoard();
 
-  playing=true;
-
-  lives=3;
+  playerReset();
 
   score=0;
 
-  shield=false;
+  lines=0;
 
-  balls.length=0;
+  gameOver=false;
 
-  updateHUD();
+  document.getElementById('score').innerText=0;
+  document.getElementById('lines').innerText=0;
 
-  toast('🏏 GAME START');
-
-  loop();
+  update();
 }
 
 function resetGame(){
 
-  playing=false;
-
-  score=0;
-
-  lives=3;
-
-  shield=false;
-
-  balls.length=0;
-
-  updateHUD();
-
-  ctx.clearRect(0,0,W,H);
+  startGame();
 }
 
-window.addEventListener('keydown',e=>{
-  keys[e.key]=true;
+/* KEYBOARD */
+
+document.addEventListener('keydown',e=>{
+
+  if(e.key==='ArrowLeft') playerMove(-1);
+
+  else if(e.key==='ArrowRight') playerMove(1);
+
+  else if(e.key==='ArrowDown') playerDrop();
+
+  else if(e.key==='ArrowUp') rotate();
 });
 
-window.addEventListener('keyup',e=>{
-  keys[e.key]=false;
-});
+/* MOBILE */
 
-/* SMOOTH DPAD */
+document.getElementById('leftBtn')
+.addEventListener('click',()=>playerMove(-1));
 
-function hold(dir){
+document.getElementById('rightBtn')
+.addEventListener('click',()=>playerMove(1));
 
-  keys[dir]=true;
-}
+document.getElementById('downBtn')
+.addEventListener('click',()=>playerDrop());
 
-function release(dir){
-
-  keys[dir]=false;
-}
-
-const left=document.getElementById('leftBtn');
-
-left.addEventListener('touchstart',()=>hold('ArrowLeft'));
-left.addEventListener('touchend',()=>release('ArrowLeft'));
-
-left.addEventListener('mousedown',()=>hold('ArrowLeft'));
-left.addEventListener('mouseup',()=>release('ArrowLeft'));
-
-const right=document.getElementById('rightBtn');
-
-right.addEventListener('touchstart',()=>hold('ArrowRight'));
-right.addEventListener('touchend',()=>release('ArrowRight'));
-
-right.addEventListener('mousedown',()=>hold('ArrowRight'));
-right.addEventListener('mouseup',()=>release('ArrowRight'));
-
-updateHUD();
+createBoard();
+draw();
 
 </script>
 
