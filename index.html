@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MI Fan Zone 💙</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Baloo+2:wght@400;700;900&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Baloo+2:wght@400;700;900&display=swap" rel="stylesheet">
 
 <style>
 
@@ -25,8 +25,8 @@
 body{
   background:var(--dark);
   font-family:'Baloo 2',cursive;
-  overflow-x:hidden;
   color:white;
+  overflow-x:hidden;
 }
 
 /* STARFIELD */
@@ -119,13 +119,6 @@ body::before{
   padding:20px;
   border:2px solid var(--blue);
   margin-top:20px;
-  transition:0.3s;
-}
-
-.card:hover{
-  transform:translateY(-4px);
-  border-color:var(--gold);
-  box-shadow:0 0 25px rgba(212,175,55,0.4);
 }
 
 .card::before{
@@ -208,15 +201,7 @@ canvas{
   margin-top:15px;
 }
 
-.hud{
-  margin-top:10px;
-  font-family:'Press Start 2P';
-  font-size:10px;
-  display:flex;
-  justify-content:space-between;
-  flex-wrap:wrap;
-  gap:10px;
-}
+/* BUTTONS */
 
 .controls{
   margin-top:15px;
@@ -270,6 +255,36 @@ canvas{
   font-size:20px;
 }
 
+/* HUD */
+
+.hud{
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  margin-top:18px;
+  flex-wrap:wrap;
+}
+
+.hud-box{
+  min-width:120px;
+  background:#001A3A;
+  border:2px solid var(--gold);
+  border-radius:14px;
+  padding:12px;
+  text-align:center;
+  font-family:'Press Start 2P';
+  font-size:10px;
+  color:var(--sky);
+  box-shadow:0 0 12px rgba(212,175,55,0.3);
+}
+
+.hud-box span{
+  display:block;
+  margin-top:10px;
+  font-size:16px;
+  color:var(--gold);
+}
+
 /* RULES */
 
 .rules{
@@ -311,7 +326,7 @@ canvas{
   <p>Retro Arcade Edition 🔥</p>
 </div>
 
-<!-- HOME -->
+<!-- FAN CARD -->
 
 <div class="card">
 
@@ -346,11 +361,6 @@ canvas{
 
 <h2>🎮 MI TETRIS</h2>
 
-<div class="hud">
-<div>SCORE: <span id="score">0</span></div>
-<div>LINES: <span id="lines">0</span></div>
-</div>
-
 <canvas id="game" width="300" height="600"></canvas>
 
 <div class="controls">
@@ -358,7 +368,7 @@ canvas{
 <button class="btn reset" onclick="resetGame()">↺ RESET</button>
 </div>
 
-<!-- MOBILE CONTROLS -->
+<!-- JOYSTICK -->
 
 <div class="dpad">
 
@@ -374,6 +384,24 @@ canvas{
 
 </div>
 
+<!-- SCORE HUD -->
+
+<div class="hud">
+
+<div class="hud-box">
+🏆 SCORE
+<br>
+<span id="score">0</span>
+</div>
+
+<div class="hud-box">
+📏 LINES
+<br>
+<span id="lines">0</span>
+</div>
+
+</div>
+
 <!-- RULES -->
 
 <div class="rules">
@@ -381,20 +409,13 @@ canvas{
 <h3>📜 HOW TO PLAY</h3>
 
 <ul>
-<li>Arrange the falling blocks to complete full horizontal lines.</li>
-
-<li>When a line is completed, it disappears and you get points.</li>
-
-<li>The game becomes faster as your score increases.</li>
-
-<li>If the blocks reach the top → GAME OVER 💀</li>
-
-<li>Use ◀ ▶ to move blocks.</li>
-
-<li>Use ⟳ to rotate blocks.</li>
-
-<li>Use ▼ to drop faster.</li>
-
+<li>Arrange falling blocks to complete full horizontal lines.</li>
+<li>Completed lines disappear and increase your score.</li>
+<li>The game gets faster as score increases.</li>
+<li>If blocks touch the top → GAME OVER 💀</li>
+<li>◀ ▶ = Move</li>
+<li>⟳ = Rotate</li>
+<li>▼ = Drop faster</li>
 </ul>
 
 </div>
@@ -636,11 +657,6 @@ function rotate(){
   }
 
   matrix.forEach(row=>row.reverse());
-
-  if(collide(board,player)){
-
-    rotate();
-  }
 }
 
 function sweep(){
