@@ -186,6 +186,85 @@ body::before{
   color:var(--sky);
 }
 
+/* AUDIO PLAYER */
+
+.audio-card{
+  text-align:center;
+}
+
+.audio-card h2{
+  margin-bottom:16px;
+}
+
+.audio-player{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:14px;
+}
+
+.audio-player audio{
+  width:100%;
+  max-width:460px;
+  border-radius:40px;
+  outline:none;
+  filter:drop-shadow(0 0 8px rgba(212,175,55,0.5));
+}
+
+/* Style the native audio bar to fit the theme on supported browsers */
+.audio-player audio::-webkit-media-controls-panel{
+  background:#0A2A5E;
+}
+
+.now-playing{
+  font-family:'Press Start 2P';
+  font-size:9px;
+  color:var(--sky);
+  animation:blink 1.2s step-start infinite;
+}
+
+.now-playing.paused{
+  animation:none;
+  color:rgba(91,200,245,0.4);
+}
+
+@keyframes blink{
+  0%,100%{opacity:1;}
+  50%{opacity:0;}
+}
+
+.equalizer{
+  display:flex;
+  align-items:flex-end;
+  gap:4px;
+  height:30px;
+}
+
+.equalizer span{
+  display:block;
+  width:6px;
+  background:var(--gold);
+  border-radius:3px 3px 0 0;
+  animation:eq 0.6s ease-in-out infinite alternate;
+}
+
+.equalizer span:nth-child(1){ height:10px; animation-delay:0s; }
+.equalizer span:nth-child(2){ height:22px; animation-delay:0.1s; }
+.equalizer span:nth-child(3){ height:16px; animation-delay:0.2s; }
+.equalizer span:nth-child(4){ height:28px; animation-delay:0.05s; }
+.equalizer span:nth-child(5){ height:12px; animation-delay:0.15s; }
+
+@keyframes eq{
+  from{ transform:scaleY(0.4); }
+  to{ transform:scaleY(1); }
+}
+
+.equalizer.paused span{
+  animation:none;
+  transform:scaleY(0.4);
+  opacity:0.3;
+}
+
 /* GAME */
 
 .game-box{
@@ -355,6 +434,29 @@ canvas{
 
 </div>
 
+<!-- AUDIO PLAYER -->
+
+<div class="card audio-card">
+
+  <h2>🎵 <span style="color:var(--gold)">FAN ANTHEM</span></h2>
+
+  <div class="audio-player">
+
+    <div class="equalizer paused" id="eq">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+
+    <p class="now-playing paused" id="nowPlaying">▐▐ PAUSED</p>
+
+    <audio id="miAudio" controls>
+      <source src="chechii_vibe_check.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+
+  </div>
+
+</div>
+
 <!-- GAME -->
 
 <div class="card game-box">
@@ -429,6 +531,32 @@ Made for fun 😸💙
 </div>
 
 <script>
+
+/* AUDIO PLAYER LOGIC */
+
+const miAudio = document.getElementById('miAudio');
+const eq = document.getElementById('eq');
+const nowPlaying = document.getElementById('nowPlaying');
+
+miAudio.addEventListener('play', () => {
+  eq.classList.remove('paused');
+  nowPlaying.classList.remove('paused');
+  nowPlaying.textContent = '▶ NOW PLAYING — CHECHII VIBE CHECK';
+});
+
+miAudio.addEventListener('pause', () => {
+  eq.classList.add('paused');
+  nowPlaying.classList.add('paused');
+  nowPlaying.textContent = '▐▐ PAUSED';
+});
+
+miAudio.addEventListener('ended', () => {
+  eq.classList.add('paused');
+  nowPlaying.classList.add('paused');
+  nowPlaying.textContent = '■ ENDED';
+});
+
+/* TETRIS GAME */
 
 const canvas=document.getElementById('game');
 const ctx=canvas.getContext('2d');
